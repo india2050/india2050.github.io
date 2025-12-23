@@ -3,28 +3,487 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>India 2050</title>
-  <meta name="description" content="India 2050 — policy, economics, and a roadmap to a developed India." />
+  <title>India 2050 — Roadmap to a High-Income India</title>
+  <meta name="description" content="India 2050 is a public roadmap: policy, economics, infrastructure, and execution plans to help India become a high-income, developed nation by 2050." />
+  <meta name="theme-color" content="#0b1220" />
+
   <style>
-    body{max-width:760px;margin:40px auto;padding:0 16px;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    h1{margin:0 0 8px}
-    .tag{color:#555;margin:0 0 24px}
-    a{color:inherit}
+    :root{
+      --bg:#070b14;
+      --panel:rgba(255,255,255,0.06);
+      --panel2:rgba(255,255,255,0.08);
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,0.72);
+      --muted2:rgba(234,240,255,0.58);
+      --border:rgba(255,255,255,0.12);
+      --accent:#6ee7ff;
+      --accent2:#8b5cf6;
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(110,231,255,0.16), transparent 60%),
+        radial-gradient(900px 500px at 85% 20%, rgba(139,92,246,0.16), transparent 60%),
+        radial-gradient(800px 600px at 50% 95%, rgba(34,197,94,0.12), transparent 60%),
+        linear-gradient(180deg, #050812, #070b14 40%, #050812);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.9}
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      position:sticky; top:0; z-index:10;
+      padding:14px 0;
+      backdrop-filter: blur(10px);
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:0.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(110,231,255,0.9), rgba(139,92,246,0.9));
+      box-shadow: 0 12px 30px rgba(110,231,255,0.12);
+      position:relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:7px;
+      border-radius:10px;
+      background: rgba(0,0,0,0.28);
+      border:1px solid rgba(255,255,255,0.12);
+    }
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .navlinks a:hover{
+      color:var(--text);
+      border-color:var(--border);
+      background:rgba(255,255,255,0.04);
+    }
+
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{padding:26px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(110,231,255,0.10);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(32px, 4.2vw, 54px);
+      line-height:1.05;
+      letter-spacing:-0.9px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 16.5px;
+    }
+    .ctaRow{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight:600;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover{background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18)}
+    .btn:active{transform: translateY(1px)}
+    .btnPrimary{
+      border-color: rgba(110,231,255,0.35);
+      background: linear-gradient(135deg, rgba(110,231,255,0.20), rgba(139,92,246,0.16));
+    }
+    .btnSmall{padding:10px 12px; border-radius:12px; font-size:14px}
+
+    .heroSide{padding:18px 18px}
+    .metricGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    .metric{
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+    }
+    .metric .v{
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin:0;
+    }
+    .metric .k{
+      margin:4px 0 0;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .sideTitle{
+      margin:0 0 12px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+    }
+    .note{
+      margin-top:12px;
+      color: var(--muted);
+      font-size: 13.5px;
+      border-top:1px solid var(--border);
+      padding-top:12px;
+    }
+
+    .section{
+      margin-top:18px;
+      padding:22px;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size: 22px;
+      letter-spacing:-0.2px;
+    }
+    .section p{margin:0 0 12px; color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+    .tile{
+      padding:16px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      min-height: 132px;
+    }
+    .tile h3{margin:0 0 6px; font-size:16px}
+    .tile p{margin:0; color:var(--muted2); font-size:14px}
+    .pill{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 12.5px;
+      margin-top:12px;
+    }
+
+    .twoCol{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (max-width: 900px){.twoCol{grid-template-columns:1fr}}
+    .list{
+      margin:0;
+      padding-left:18px;
+      color: var(--muted);
+    }
+    .list li{margin:7px 0}
+
+    .footer{
+      margin-top:18px;
+      padding:18px 22px;
+      color: var(--muted2);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .footLinks{display:flex; gap:10px; flex-wrap:wrap}
+    .footLinks a{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      color: var(--muted2);
+    }
+    .footLinks a:hover{
+      border-color: var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    /* small section anchors */
+    .anchor{scroll-margin-top:90px}
   </style>
 </head>
+
 <body>
-  <h1>India 2050</h1>
-  <p class="tag">A roadmap to make India a high-income, developed nation by 2050.</p>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>India 2050</div>
+      </div>
+      <div class="navlinks">
+        <a href="#mission">Mission</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#plan">First Targets</a>
+        <a href="#work">How we work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
 
-  <h2>Focus areas</h2>
-  <ul>
-    <li>Infrastructure (railways, metros, logistics)</li>
-    <li>Manufacturing & jobs</li>
-    <li>Education, research & innovation</li>
-    <li>Energy, climate & cities</li>
-    <li>Governance & institutions</li>
-  </ul>
+    <div class="hero">
+      <div class="card heroMain">
+        <div class="kicker"><span class="dot"></span> Public roadmap • Policy + economics • Execution focus</div>
+        <h1>Roadmap to a high-income, developed India by 2050.</h1>
+        <p class="sub">
+          India 2050 is a public initiative to explain <b>what needs to be built</b>, <b>what it costs</b>, and <b>how to execute</b>.
+          We publish practical write-ups, city & corridor plans, and data-backed arguments—starting with infrastructure, railways, metros, and logistics.
+        </p>
 
-  <p>Contact: <a href="mailto:india2050official@gmail.com">india2050official@gmail.com</a></p>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#plan">Start here: 2025–2030 targets →</a>
+          <a class="btn" href="#pillars">Explore focus pillars</a>
+          <a class="btn btnSmall" href="mailto:india2050vision@gmail.com">Email: india2050vision@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="card heroSide">
+        <div class="sideTitle">By 2050, we optimize for</div>
+        <div class="metricGrid">
+          <div class="metric">
+            <p class="v">High income</p>
+            <p class="k">Sustained productivity growth</p>
+          </div>
+          <div class="metric">
+            <p class="v">Fast mobility</p>
+            <p class="k">Rail + metro + logistics backbone</p>
+          </div>
+          <div class="metric">
+            <p class="v">Good cities</p>
+            <p class="k">Housing, transit, jobs, air</p>
+          </div>
+          <div class="metric">
+            <p class="v">State capacity</p>
+            <p class="k">Institutions + delivery systems</p>
+          </div>
+        </div>
+        <div class="note">
+          This site will grow into a library of short policy notes + deep corridor plans (e.g., HSR, freight, metro networks),
+          and simple dashboards to track progress.
+        </div>
+      </div>
+    </div>
+
+    <div id="mission" class="card section anchor">
+      <h2>Mission</h2>
+      <p>
+        Build a clear, honest, data-driven roadmap for India’s transition to a high-income economy—focused on execution.
+        We avoid vague slogans and prioritize: <b>investment logic</b>, <b>policy design</b>, <b>institution building</b>, and <b>project delivery</b>.
+      </p>
+
+      <div class="twoCol">
+        <div class="tile">
+          <h3>What we publish</h3>
+          <ul class="list">
+            <li>Infrastructure & rail/metro plans (corridors, timelines, costs)</li>
+            <li>Policy briefs: what to change, why it matters, expected impact</li>
+            <li>Explainers: economics, tradeoffs, and execution bottlenecks</li>
+            <li>Scorecards: progress tracking (simple + transparent metrics)</li>
+          </ul>
+          <div class="pill">Open, practical, non-partisan</div>
+        </div>
+        <div class="tile">
+          <h3>Who this is for</h3>
+          <ul class="list">
+            <li>Students and builders who want clarity</li>
+            <li>Professionals working in infrastructure and policy</li>
+            <li>Researchers and analysts</li>
+            <li>Anyone who cares about outcomes, not noise</li>
+          </ul>
+          <div class="pill">Community-driven over time</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="pillars" class="card section anchor">
+      <h2>Focus pillars</h2>
+      <p>We cover the full development stack. We start with railways/metros/logistics because they compound across every sector.</p>
+
+      <div class="grid">
+        <div class="tile">
+          <h3>Infrastructure & Mobility</h3>
+          <p>Railways, metros, HSR where justified, freight corridors, ports, last-mile logistics.</p>
+          <div class="pill">Trains • Cities • Logistics</div>
+        </div>
+        <div class="tile">
+          <h3>Manufacturing & Jobs</h3>
+          <p>Industrial clusters, export strategy, supply chains, productivity, and skilling.</p>
+          <div class="pill">Scale • Exports • Productivity</div>
+        </div>
+        <div class="tile">
+          <h3>Education & Research</h3>
+          <p>University quality, research funding, talent pipelines, and global competitiveness.</p>
+          <div class="pill">Human capital</div>
+        </div>
+        <div class="tile">
+          <h3>Energy & Climate</h3>
+          <p>Power capacity, grid upgrades, clean energy, air quality, and adaptation plans.</p>
+          <div class="pill">Power • Air • Resilience</div>
+        </div>
+        <div class="tile">
+          <h3>Governance & Institutions</h3>
+          <p>State capacity, regulatory design, procurement, data, accountability, delivery.</p>
+          <div class="pill">Execution systems</div>
+        </div>
+        <div class="tile">
+          <h3>Urbanization & Housing</h3>
+          <p>Transit-oriented development, affordable housing, zoning reforms, city finance.</p>
+          <div class="pill">Cities that work</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="plan" class="card section anchor">
+      <h2>First targets (2025–2030)</h2>
+      <p>
+        These are the “first targets” we’ll publish as detailed, city-by-city / corridor-by-corridor plans.
+        This section will evolve as we add pages and data.
+      </p>
+
+      <div class="twoCol">
+        <div class="tile">
+          <h3>Railways, metros, logistics</h3>
+          <ul class="list">
+            <li>Identify top 15–20 economic corridors and build a phased plan</li>
+            <li>Prioritize freight reliability + passenger punctuality</li>
+            <li>Metro expansions tied to TOD (transit-oriented development)</li>
+            <li>Station areas as economic zones (walkable, dense, safe)</li>
+          </ul>
+          <div class="pill">Where the compounding starts</div>
+        </div>
+        <div class="tile">
+          <h3>Manufacturing push</h3>
+          <ul class="list">
+            <li>Cluster strategy: electronics, auto, chemicals, textiles, defense</li>
+            <li>Export playbooks + logistics cost reduction</li>
+            <li>Simple compliance + faster clearances (time is money)</li>
+            <li>Skill pipelines aligned to clusters</li>
+          </ul>
+          <div class="pill">Jobs at scale</div>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="tile">
+          <h3>Education & research upgrade</h3>
+          <ul class="list">
+            <li>Research universities: autonomy + funding + accountability</li>
+            <li>More world-class faculty pipelines</li>
+            <li>Industry–academia bridges and labs</li>
+            <li>Outcome-based metrics (not just spend)</li>
+          </ul>
+          <div class="pill">Innovation engine</div>
+        </div>
+        <div class="tile">
+          <h3>Government execution</h3>
+          <ul class="list">
+            <li>Project delivery units (PDUs) for mega projects</li>
+            <li>Procurement reform + standardization</li>
+            <li>Transparent dashboards for progress</li>
+            <li>Policy feedback loops (iterate fast)</li>
+          </ul>
+          <div class="pill">State capacity</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="work" class="card section anchor">
+      <h2>How we work</h2>
+      <p>
+        Everything here is built to be readable, shareable, and updatable. Over time, we’ll add pages for each focus area.
+      </p>
+
+      <div class="grid">
+        <div class="tile">
+          <h3>Write-ups</h3>
+          <p>Short explainers that clarify tradeoffs and point to actionable decisions.</p>
+          <div class="pill">Clarity first</div>
+        </div>
+        <div class="tile">
+          <h3>Plans</h3>
+          <p>Corridor/city plans with phased milestones, constraints, and rough cost ranges.</p>
+          <div class="pill">Execution-minded</div>
+        </div>
+        <div class="tile">
+          <h3>Data</h3>
+          <p>Simple datasets + charts so the discussion stays grounded in reality.</p>
+          <div class="pill">Evidence over vibes</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact" class="card footer anchor">
+      <div>
+        <b>Contact</b>: <a href="mailto:india2050vision@gmail.com">india2050vision@gmail.com</a>
+        <div style="margin-top:6px;">© <span id="y"></span> India 2050. Built on GitHub Pages.</div>
+      </div>
+      <div class="footLinks">
+        <a href="#mission">Mission</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#plan">First Targets</a>
+        <a href="#work">How we work</a>
+        <a href="#">Top</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
